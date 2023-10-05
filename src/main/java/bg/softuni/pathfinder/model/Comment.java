@@ -14,10 +14,12 @@ public class Comment {
     private Boolean approved;
     @Column(name = "created")
     private LocalDateTime created;
-    @Column(name = "text_content", columnDefinition = "TEXT",nullable = false)
+    @Column(name = "text_content", columnDefinition = "TEXT", nullable = false)
     private String textContent;
     @ManyToOne
     private User author;
+    @ManyToOne
+    private Route route;
 
     public Comment() {
     }

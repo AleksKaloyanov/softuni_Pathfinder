@@ -12,6 +12,9 @@ public class Role {
     @Column(nullable = false)
     private UserRoles name;
 
+    public Role() {
+    }
+
     public Long getId() {
         return id;
     }
