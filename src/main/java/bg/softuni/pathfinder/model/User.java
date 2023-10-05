@@ -11,15 +11,20 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "full_name")
     private String fullName;
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+    )
     private Set<Role> role;
     @Enumerated(EnumType.STRING)
     private Level level;
@@ -27,7 +32,7 @@ public class User {
     public User() {
     }
 
-    public Long getId() {   
+    public Long getId() {
         return id;
     }
 
