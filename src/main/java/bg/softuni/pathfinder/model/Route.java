@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "route")
+@Table(name = "routes")
 public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
     @Column(name = "gpx_coordinates", columnDefinition = "LONGTEXT")
     private String gpxCoordinates;
     @Enumerated(EnumType.STRING)
@@ -28,21 +30,21 @@ public class Route {
     public Route() {
     }
 
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public Route setCategories(Set<Category> categories) {
-        this.categories = categories;
-        return this;
-    }
-
     public Long getId() {
         return id;
     }
 
     public Route setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Route setDescription(String description) {
+        this.description = description;
         return this;
     }
 
@@ -88,6 +90,15 @@ public class Route {
 
     public Route setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+        return this;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public Route setCategories(Set<Category> categories) {
+        this.categories = categories;
         return this;
     }
 }

@@ -68,4 +68,13 @@ public class Comment {
         this.author = author;
         return this;
     }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public Comment setRoute(Route route) {
+        this.route = route;
+        return this;
+    }
 }

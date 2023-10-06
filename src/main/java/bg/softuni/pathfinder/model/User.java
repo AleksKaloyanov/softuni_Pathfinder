@@ -17,6 +17,8 @@ public class User {
     private String password;
     @Column(name = "full_name")
     private String fullName;
+    @Column(name = "age")
+    private Integer age;
     @Column(name = "email", unique = true)
     private String email;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -65,6 +67,15 @@ public class User {
 
     public User setFullName(String fullName) {
         this.fullName = fullName;
+        return this;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public User setAge(Integer age) {
+        this.age = age;
         return this;
     }
 
