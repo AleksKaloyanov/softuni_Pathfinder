@@ -1,6 +1,6 @@
 package bg.softuni.pathfinder.service.impl;
 
-import bg.softuni.pathfinder.model.User;
+import bg.softuni.pathfinder.model.entity.UserEntity;
 import bg.softuni.pathfinder.repository.UserRepository;
 import bg.softuni.pathfinder.service.UserService;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<UserEntity> getAll() {
         return userRepository.findAll();
     }
 }

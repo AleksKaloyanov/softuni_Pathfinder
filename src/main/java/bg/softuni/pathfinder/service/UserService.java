@@ -1,9 +1,9 @@
 package bg.softuni.pathfinder.service;
 
-import bg.softuni.pathfinder.model.User;
+import bg.softuni.pathfinder.model.entity.UserEntity;
 
 import java.util.List;
 
 public interface UserService {
-    List<User> getAll();
+    List<UserEntity> getAll();
 }
