@@ -8,12 +8,13 @@ import java.util.Set;
 @Entity
 @Table(name = "routes")
 public class RouteEntity extends BaseEntity {
-    private String description;
     private String gpxCoordinates;
+    private String description;
     private LevelEnum level;
     private String name;
     private UserEntity author;
     private String videoUrl;
+    private Set<PictureEntity> pictures;
     private Set<CategoryEntity> categories;
 
     public RouteEntity() {
@@ -79,7 +80,7 @@ public class RouteEntity extends BaseEntity {
         return this;
     }
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "routes_categories",
             joinColumns = @JoinColumn(name = "route_id"),
             inverseJoinColumns = @JoinColumn(name = "categories_id"))
@@ -89,6 +90,16 @@ public class RouteEntity extends BaseEntity {
 
     public RouteEntity setCategories(Set<CategoryEntity> categories) {
         this.categories = categories;
+        return this;
+    }
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    public Set<PictureEntity> getPictures() {
+        return pictures;
+    }
+
+    public RouteEntity setPictures(Set<PictureEntity> pictures) {
+        this.pictures = pictures;
         return this;
     }
 }

@@ -1,17 +1,17 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="~{fragments/commons::head}">
+<head th:replace="~{fragments/commons::head}">
 </head>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
-    <h1 class="    border-bottom mb-5">Login</h1>
+    <h1 class="border-bottom mb-5">Login</h1>
     <div class="d-flex justify-content-center">
 
         <div class="row g-3 align-items-center">
 
             <form
                     th:object="${userLoginBindingModel}"
-                    th:action="@{/user/login}"
+                    th:action="@{/users/login}"
                     th:method="post">
                 <div>
                     <h5 th:if="${!isExists}" class="bg-danger">Incorrect username or password</h5>
@@ -47,7 +47,7 @@
 
     </div>
 </main>
-<footer th:fragment="~{fragments/commons::footer}">
+<footer th:replace="~{fragments/commons::footer}">
 </footer>
 </body>
 </html>
